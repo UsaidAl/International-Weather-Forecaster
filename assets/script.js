@@ -61,4 +61,12 @@ function getWeather() {
         }
     
 
+        function addToSearchHistory(city) {
+            const listItem = $('<li>');
+            listItem.text(city);
+            searchList.append(listItem);
+        }
+    
+        // Call getWeather when the button is clicked
+        $('.btn').click(getWeather);
 }
