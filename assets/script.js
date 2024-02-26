@@ -69,4 +69,11 @@ function getWeather() {
     
         // Call getWeather when the button is clicked
         $('.btn').click(getWeather);
+
+        function displayForecast(forecastData) {
+            const forecastCard = $('#forecastCard');
+            forecastCard.empty(); // Clear previous forecast data
+        
+
+
 }
