@@ -25,8 +25,30 @@ function getWeather() {
 
                 displayWeather(cityName, temperature, windspeed, humidity);
                 addToSearchHistory(city);
-            )
-    }
+            
+                const lat = data.city.coord.lat;
+                const lon = data.city.coord.lon;
+    
+                // Fetch the 5-day forecast using the latitude and longitude
+                const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+                return fetch(forecastApiUrl);
+            })
+            .then(function (forecastResponse) {
+                if (!forecastResponse.ok) {
+                    throw new Error('Network response was not ok for forecast');
+                }
+                return forecastResponse.json();
+            })
+            .then(function (forecastData) {
+                displayForecast(forecastData);
+            })
+    
+                
+                .catch(function (error) {
+                    console.error('Error fetching weather data:', error);
+                    alert('Failed to fetch weather data. Please try again later.');
+                });
+        }
 
 
 }
