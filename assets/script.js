@@ -81,4 +81,23 @@ function getWeather() {
             // Convert temperature to degrees Celsius
             const tempCelsius = (forecastItem.main.temp - 273.15).toFixed(2);
 
+                 // Get weather icon URL
+        const iconCode = forecastItem.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+
+        const forecastInfo = `
+            <div class="forecast-item">
+                <p>Date: ${date.toDateString()}</p>
+                <img src="${iconUrl}" alt="Weather Icon">
+                <p>Temperature: ${tempCelsius} °C</p>
+                <p>Wind Speed: ${forecastItem.wind.speed} m/s</p>
+                <p>Humidity: ${forecastItem.main.humidity}%</p>
+            </div>
+        `;
+
+        forecastCard.append(forecastInfo);
+    }
+    
+}
+
 }
