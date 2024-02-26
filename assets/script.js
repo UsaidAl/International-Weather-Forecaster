@@ -74,6 +74,11 @@ function getWeather() {
             const forecastCard = $('#forecastCard');
             forecastCard.empty(); // Clear previous forecast data
         
-
+            for (let i = 0; i < forecastData.list.length; i += 8) {
+                const forecastItem = forecastData.list[i];
+                const date = new Date(forecastItem.dt * 1000); // Convert timestamp to date
+        
+            // Convert temperature to degrees Celsius
+            const tempCelsius = (forecastItem.main.temp - 273.15).toFixed(2);
 
 }
