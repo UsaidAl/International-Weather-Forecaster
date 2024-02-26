@@ -1,1 +1,2 @@
-# International-Weather-Forecaster
+This  is my international weather forecastor. 
+when opening the page you are presented with a dashboard and a search bar. When searching for a city you are then presented with the current weather for that city. listing the current temperature, windspeeds and humidity along with an icon representing the weather . You are also  given a 5 day forecast of that city with the same features as the current weather display.
