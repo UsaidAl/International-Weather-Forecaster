@@ -2,6 +2,8 @@
 //var cityName = document.getElementById('city');
 // var cityName = document.querySelector('#city');
 
+var weatherCard= $('#weatherCard')
+
 
 function getWeather() {
     const apiKey = '4ddeea98d58eacc28a63a689e6c76c60';
@@ -26,14 +28,28 @@ function getWeather() {
         .then(function(data) {
             console.log("Data: ", data);
             console.log("Type: ", typeof data);
-          
+            var cityName= data.city.name 
+            weatherCard.append(cityName)
            // displayWeather(data);
             //displayForecast(data);
         })
-        .catch(function(error) {
-            console.error('Error fetching weather data:', error);
-            displayError('Failed to fetch weather data. Please try again later.');
-        });
+     
+        fetch(currentWeatherApi)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                const time = data.dt;
+                const temperature = data.main.temp;
+                const windspeed = data.wind.speed;
+                const humidity = data.main.humidity;
+
+                document.getElementById('time').textContent = time;
+                document.getElementById('cityName').textContent = cityName;
+                document.getElementById('temperature').textContent = temperature;
+                document.getElementById('windspeed').textContent = windspeed;
+                document.getElementById('humidity').textContent = humidity;
+            })
 
 
     // Fetch FORECAST weather data from the API
@@ -48,6 +64,10 @@ function getWeather() {
         .then(function(data) {
             console.log("Data: ", data);
             console.log("Type: ", typeof data);
+            var cityName= data.city.name 
+            console.log(cityName)
+            
+
             
            // displayWeather(data);
             //displayForecast(data);
@@ -56,4 +76,5 @@ function getWeather() {
             console.error('Error fetching weather data:', error);
             displayError('Failed to fetch weather data. Please try again later.');
         });
-}
+
+    }
