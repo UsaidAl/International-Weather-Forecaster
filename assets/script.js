@@ -19,7 +19,7 @@ function getWeather() {
             })
             .then(function (data) {
                 const cityName = data.city.name;
-                const temperature = data.list[0].main.temp;
+                const temperature = (data.list[0].main.temp - 273.15).toFixed(2);
                 const windspeed = data.list[0].wind.speed;
                 const humidity = data.list[0].main.humidity;
 
@@ -53,9 +53,9 @@ function getWeather() {
         function displayWeather(cityName, temperature, windspeed, humidity) {
             const weatherInfo = `
                 <h2>${cityName}</h2>
-                <p>Temperature: ${temperature}</p>
-                <p>Wind Speed: ${windspeed}</p>
-                <p>Humidity: ${humidity}</p>
+                <p>Temperature: ${temperature} °C</p>
+                <p>Wind Speed: ${windspeed} m/s</p>
+                <p>Humidity: ${humidity} %</p>
             `;
             weatherCard.html(weatherInfo);
         }
